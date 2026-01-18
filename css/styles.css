@@ -1,0 +1,394 @@
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#0b120e;
+  font-family:monospace;
+  color:#4caf50;
+}
+
+#app{
+  max-width:420px;
+  margin:0 auto;
+  padding:10px;
+}
+
+.hud-off{
+  opacity:.15;
+  pointer-events:none;
+}
+
+/* ================= HUD ================= */
+
+#hud-top{
+  background:#07110a;
+  border:1px solid #4caf50;
+  padding:10px;
+  box-shadow:0 0 15px #4caf50 inset;
+}
+
+#hud-header{
+  display:flex;
+  justify-content:space-between;
+}
+
+#player-block{
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+#player-icon{
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#player-icon img{
+  width:85%;
+  height:85%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 8px #4caf50);
+}
+
+#player-name{
+  font-size:12px;
+  line-height:1.2;
+}
+
+#hud-right{
+  text-align:right;
+  font-size:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+}
+
+/* ================= STATS ================= */
+
+.stat-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  height:16px;
+  margin-top:4px;
+}
+
+.stat-row span{
+  width:90px;
+}
+
+.segments{
+  display:flex;
+  gap:2px;
+  flex:1;
+  height:10px;
+}
+
+.segment{
+  flex:1;
+  min-width:6px;
+  border:1px solid #4caf50;
+  background:#07110a;
+}
+
+.segment.on{
+  background:#4caf50;
+  box-shadow:0 0 6px #4caf50;
+}
+
+.segment.damage-pop{
+  animation:pop .25s;
+}
+
+.segment.danger{
+  animation:redblink .5s infinite;
+}
+
+@keyframes pop{
+  from{transform:scale(1.6);background:#ff4444}
+  to{transform:scale(1)}
+}
+
+@keyframes redblink{
+  0%{background:#4caf50}
+  50%{background:#ff2a2a}
+  100%{background:#4caf50}
+}
+
+/* ================= STATUS ================= */
+
+#status-container{
+  margin-top:6px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+}
+
+#status-container span{
+  border:1px solid #4caf50;
+  padding:2px 6px;
+  font-size:11px;
+  box-shadow:0 0 6px #4caf50;
+}
+
+/* ================= APPS ================= */
+
+#pipboy-apps{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:6px;
+}
+
+.pip-app{
+  flex:1 1 30%;
+  border:1px solid #4caf50;
+  text-align:center;
+  padding:6px;
+  background:#07110a;
+  box-shadow:0 0 6px #4caf50;
+  cursor:pointer;
+}
+
+.pip-app.active{
+  background:#4caf50;
+  color:#07110a;
+}
+
+/* ================= TERMINAL ================= */
+
+#pip-app-content{
+  margin-top:6px;
+  height:260px;
+  border:1px solid #4caf50;
+  padding:8px;
+  background:#07110a;
+  box-shadow:0 0 10px #4caf50 inset;
+  white-space:pre-wrap;
+  font-family:"Courier New",monospace;
+  overflow-y:auto;
+}
+
+/* ================= INPUT ================= */
+
+/* ================= INPUT DEFINITIVO ================= */
+#commandInput{
+  display:block;
+  width:100%;
+  height:38px;
+  margin-top:8px;
+  padding:6px 8px;
+
+  background:#07110a;
+  color:#4caf50;
+
+  border:1px solid #4caf50;
+  font-family:monospace;
+  font-size:14px;
+
+  outline:none;
+  box-shadow:0 0 10px #4caf50;
+
+  opacity:1 !important;
+}
+
+#commandInput::placeholder{
+  color:#4caf50;
+  opacity:.6;
+}
+
+/* ===============================
+   💍 ANILLO – RELIQUIA
+================================ */
+
+#npc-toggle{
+ position:fixed;
+ right:10px;
+ bottom:10px;
+
+ width:42px;
+ height:42px;
+ line-height:42px;
+
+ font-size:20px;
+ text-align:center;
+
+ background:#07110a;
+ border:1px solid #4caf50;
+ cursor:pointer;
+
+ animation: relic-float 3.5s ease-in-out infinite,
+            relic-pulse 2.8s ease-in-out infinite;
+
+ box-shadow:
+   0 0 8px #4caf50,
+   0 0 16px rgba(76,175,80,0.6);
+
+ transition:
+   transform .25s ease,
+   box-shadow .25s ease,
+   filter .25s ease;
+}
+
+/* Flotación */
+@keyframes relic-float{
+ 0%   { transform: translateY(0); }
+ 50%  { transform: translateY(-6px); }
+ 100% { transform: translateY(0); }
+}
+
+/* Pulso */
+@keyframes relic-pulse{
+ 0%{
+   box-shadow:
+     0 0 8px #4caf50,
+     0 0 16px rgba(76,175,80,0.4);
+ }
+ 50%{
+   box-shadow:
+     0 0 14px #4caf50,
+     0 0 28px rgba(76,175,80,1);
+ }
+ 100%{
+   box-shadow:
+     0 0 8px #4caf50,
+     0 0 16px rgba(76,175,80,0.4);
+ }
+}
+
+#npc-toggle:hover{
+ transform: scale(1.15) rotate(-6deg);
+ filter: brightness(1.25);
+}
+
+#npc-toggle:active{
+ transform: scale(0.95);
+}
+
+/* ================= DEBUG ================= */
+
+#debug-panel{
+  position:fixed;
+  left:10px;
+  right:10px;
+  bottom:60px;
+  background:#07110a;
+  border:1px solid #4caf50;
+  box-shadow:0 0 15px #4caf50 inset;
+  padding:10px;
+  display:none;
+  font-size:12px;
+}
+
+.pip-btn{
+  border:1px solid #4caf50;
+  padding:6px 10px;
+  margin:4px;
+  box-shadow:0 0 6px #4caf50;
+  cursor:pointer;
+  text-align:center;
+  display:inline-block;
+}
+
+/* ================= RING ================= */
+
+#npc-popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:999;
+  background:#07110a;
+}
+
+.pip-popup{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border:1px solid #4caf50;
+  box-shadow:0 0 15px #4caf50 inset;
+}
+
+.pip-popup img{
+  max-width:95%;
+  max-height:70vh;
+  object-fit:contain;
+  margin:10px auto;
+}
+
+.ring-message{
+  margin-top:12px;
+  font-size:14px;
+  color:#4caf50;
+  text-shadow:0 0 6px #4caf50;
+  text-align:center;
+}
+
+/* ===============================
+   💍 ANILLO – RELIQUIA
+================================ */
+
+#npc-toggle{
+  font-size:18px;
+  animation: relic-float 3.5s ease-in-out infinite,
+             relic-pulse 2.8s ease-in-out infinite;
+  box-shadow:
+    0 0 6px #4caf50,
+    0 0 12px rgba(76,175,80,0.6);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+}
+
+/* Flotación suave */
+@keyframes relic-float{
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Pulso de energía */
+@keyframes relic-pulse{
+  0%{
+    box-shadow:
+      0 0 6px #4caf50,
+      0 0 12px rgba(76,175,80,0.4);
+  }
+  50%{
+    box-shadow:
+      0 0 10px #4caf50,
+      0 0 18px rgba(76,175,80,0.9);
+  }
+  100%{
+    box-shadow:
+      0 0 6px #4caf50,
+      0 0 12px rgba(76,175,80,0.4);
+  }
+}
+
+/* Hover / toque */
+#npc-toggle:hover{
+  transform: scale(1.12) rotate(-4deg);
+  filter: brightness(1.2);
+  box-shadow:
+    0 0 14px #4caf50,
+    0 0 26px rgba(76,175,80,1);
+}
+
+/* Click */
+#npc-toggle:active{
+  transform: scale(0.95);
+}
+
+#mimicita-panel {
+  max-height: 80vh;
+  overflow-y: auto;
+}

@@ -1,0 +1,107 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loneless Alpha</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ================= HUD ================= -->
+  <div id="hud-top" class="hud-off">
+
+    <div id="hud-header">
+      <div id="player-block">
+        <div id="player-icon">
+          <img src="assets/images/icons/player-icon.png" alt="Player">
+        </div>
+        <div id="player-name">—</div>
+      </div>
+
+      <div id="hud-right">
+        <div id="weather"></div>
+        <div id="time"></div>
+        <div>☢ <span id="radiation-val">0</span></div>
+      </div>
+    </div>
+
+    <div class="pip-stats">
+      <div class="stat-row">
+        <span>❤ Vida</span>
+        <div id="seg-life" class="segments"></div>
+      </div>
+
+      <div class="stat-row">
+        <span>🍖 Hambre</span>
+        <div id="seg-hunger" class="segments"></div>
+      </div>
+
+      <div class="stat-row">
+        <span>💧 Sed</span>
+        <div id="seg-thirst" class="segments"></div>
+      </div>
+
+      <div class="stat-row">
+        <span>⚡ Aguante</span>
+        <div id="seg-stamina" class="segments"></div>
+      </div>
+
+      <div class="stat-row">
+        <span>🧠 Cordura</span>
+        <div id="seg-stress" class="segments"></div>
+      </div>
+
+      <div id="status-container"></div>
+    </div>
+
+  </div>
+  <!-- =============== END HUD =============== -->
+
+  <!-- APPS -->
+  <div id="pipboy-apps" class="hud-off"></div>
+
+  <!-- TERMINAL -->
+  <div id="pip-app-content" class="hud-off"></div>
+
+  <!-- INPUT REAL -->
+  <input
+    id="commandInput"
+    type="text"
+    placeholder="¿Cuál es tu nombre?"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+  >
+
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div id="npc-toggle">💍</div>
+
+<!-- DEBUG PANEL -->
+<div id="debug-panel"></div>
+
+<!-- NPC POPUP -->
+<div id="npc-popup">
+  <div class="pip-popup">
+    <div id="closeNpc" class="pip-btn">Cerrar</div>
+
+    <img src="assets/images/icons/comerciante-tami.png" alt="NPC">
+
+    <div class="ring-message">
+      Con amor, tu esposo ❤️
+    </div>
+  </div>
+</div>
+
+<!-- ENGINE -->
+<script src="js/engine.js"></script>
+
+</body>
+</html>
